@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from datetime import datetime
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 # Create your models here.
 class AppUser(models.Model):
@@ -16,5 +16,10 @@ class AppUser(models.Model):
 	class Meta:
 		ordering = ('updated',)
 		app_label = 'quickstart'
+
+class UserInfo(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	phone = models.BigIntegerField()
+
 
 

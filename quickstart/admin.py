@@ -22,6 +22,7 @@ admin.site.unregister(User)
 admin.site.register(User,UserAdmin)
 '''
 from quickstart.models import AppUser
+from quickstart.models import UserInfo
 
 class AppUserAdmin(admin.ModelAdmin):
     list_display = ('name','email','phone',)
@@ -29,5 +30,12 @@ class AppUserAdmin(admin.ModelAdmin):
     class Meta:
         model = AppUser
 
+class UserInfoAdmin(admin.ModelAdmin):
+    list_display = ('phone',)
+    class Meta:
+        model = UserInfo
+
+
 
 admin.site.register(AppUser, AppUserAdmin)
+admin.site.register(UserInfo, UserInfoAdmin)

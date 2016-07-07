@@ -26,6 +26,9 @@ router = routers.DefaultRouter()
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
+
+
+
 urlpatterns = [
     # url(r'^', include(router.urls)),
     #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
@@ -33,9 +36,11 @@ urlpatterns = [
     url(r'^users/(?P<pk>[0-9]+)/$',views.UserDetails.as_view()),    
     url(r'^appusers/$', views.AppUserList.as_view()),
     url(r'^appusers/(?P<pk>[0-9]+)/$',views.AppUserDetails.as_view()),
-    url('', include('social.apps.django_app.urls', namespace='social')),
+    #url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^sign_up/$', views.SignUp.as_view(), name="sign_up"),
-    url(r'^social_sign_up/$', views.SocialSignUp.as_view(), name="social_sign_up"),
+    url(r'^otp/$', views._GetActivationURL, name="send otp"),
+    #url(r'^social_sign_up/$', views.SocialSignUp.as_view(), name="social_sign_up"),
+    #url(r'', include('two_factor.urls', 'two_factor')),
 ]

@@ -26,7 +26,7 @@ class AppUserSerializer(serializers.ModelSerializer):
 class SignUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'password')
+        fields = ('username', 'password',)
         write_only_fields = ('password',)
 
 
